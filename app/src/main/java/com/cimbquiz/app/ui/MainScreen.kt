@@ -31,6 +31,14 @@ fun MainScreen(
     vmQuiz3: Quiz3ViewModel = viewModel()
 ) {
     Column(modifier = Modifier.padding(16.dp)){
+        QuizCompareVersion(
+            title = "Quiz #2",
+            description = stringResource(id = R.string.quiz_2) ,
+            version1 = vmQuiz2.version1,
+            version2 = vmQuiz2.version2,
+            output = vmQuiz2.output()
+        )
+        HorizontalDivider(modifier = Modifier.padding(8.dp))
         QuizSection(
             title = "Quiz #3",
             description = stringResource(id = R.string.quiz_3) ,
@@ -71,6 +79,64 @@ fun MainScreen(
         )
         Text(
             text = input,
+            modifier = Modifier.padding(start = 4.dp)
+        )
+    }
+
+    Row(verticalAlignment = Alignment.CenterVertically){
+        Text(
+            text = "Output :",
+            style = TextStyle(fontWeight = FontWeight.Bold)
+        )
+        Text(
+            text = output,
+            modifier = Modifier.padding(start = 4.dp)
+        )
+    }
+}
+
+@Composable
+fun QuizCompareVersion(
+    title: String,
+    description: String,
+    version1: String,
+    version2: String,
+    output: String,
+){
+    Text(
+        text = title,
+        style = TextStyle(
+            fontSize = 20.sp,
+            fontWeight = FontWeight.ExtraBold
+        )
+    )
+    Text(
+        modifier = Modifier.padding(top = 4.dp),
+        text = description,
+        style = TextStyle(
+            color = Color.Gray,
+            fontSize = 14.sp,
+        )
+    )
+    Box(modifier = Modifier.height(8.dp))
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = "Version 1 :",
+            style = TextStyle(fontWeight = FontWeight.Bold)
+        )
+        Text(
+            text = version1,
+            modifier = Modifier.padding(start = 4.dp)
+        )
+    }
+
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = "Version 2 :",
+            style = TextStyle(fontWeight = FontWeight.Bold)
+        )
+        Text(
+            text = version2,
             modifier = Modifier.padding(start = 4.dp)
         )
     }
