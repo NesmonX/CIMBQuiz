@@ -1,10 +1,24 @@
 package com.cimbquiz.app.ui
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.cimbquiz.app.R
 import com.cimbquiz.app.theme.CIMBQuizTheme
 import com.cimbquiz.app.viewmodels.Quiz1ViewModel
 import com.cimbquiz.app.viewmodels.Quiz2ViewModel
@@ -16,15 +30,61 @@ fun MainScreen(
     vmQuiz2: Quiz2ViewModel = viewModel(),
     vmQuiz3: Quiz3ViewModel = viewModel()
 ) {
+    Column(modifier = Modifier.padding(16.dp)){
+        QuizSection(
+            title = "Quiz #3",
+            description = stringResource(id = R.string.quiz_3) ,
+            input = vmQuiz3.input(),
+            output = vmQuiz3.output()
+        )
 
-    LaunchedEffect(Unit) {
-        vmQuiz1.invokeFunction()
-        vmQuiz2.invokeFunction()
-        vmQuiz3.invokeFunction()
     }
+}
+
+@Composable
+ fun QuizSection(
+     title: String,
+     description: String,
+     input: String,
+     output: String,
+ ){
     Text(
-        text = "CIMBQuiz"
+        text = title,
+        style = TextStyle(
+            fontSize = 20.sp,
+            fontWeight = FontWeight.ExtraBold
+        )
     )
+    Text(
+        modifier = Modifier.padding(top = 4.dp),
+        text = description,
+        style = TextStyle(
+            color = Color.Gray,
+            fontSize = 14.sp,
+        )
+    )
+    Box(modifier = Modifier.height(8.dp))
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = "Input :",
+            style = TextStyle(fontWeight = FontWeight.Bold)
+        )
+        Text(
+            text = input,
+            modifier = Modifier.padding(start = 4.dp)
+        )
+    }
+
+    Row(verticalAlignment = Alignment.CenterVertically){
+        Text(
+            text = "Output :",
+            style = TextStyle(fontWeight = FontWeight.Bold)
+        )
+        Text(
+            text = output,
+            modifier = Modifier.padding(start = 4.dp)
+        )
+    }
 }
 
 @Preview(showBackground = true)
