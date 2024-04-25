@@ -31,6 +31,13 @@ fun MainScreen(
     vmQuiz3: Quiz3ViewModel = viewModel()
 ) {
     Column(modifier = Modifier.padding(16.dp)){
+        QuizSection(
+            title = "Quiz #1",
+            description = stringResource(id = R.string.quiz_1) ,
+            input = vmQuiz1.input(),
+            output = vmQuiz1.output()
+        )
+        HorizontalDivider(modifier = Modifier.padding(8.dp))
         QuizCompareVersion(
             title = "Quiz #2",
             description = stringResource(id = R.string.quiz_2) ,
