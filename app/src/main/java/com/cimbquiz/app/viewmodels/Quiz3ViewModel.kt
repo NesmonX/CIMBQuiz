@@ -10,7 +10,7 @@ class Quiz3ViewModel @Inject constructor(): ViewModel(){
     private val stairs = 3
 
     fun input(): String {
-        return "$stairs stairs"
+        return "$stairs step"
     }
 
     fun output(): String {

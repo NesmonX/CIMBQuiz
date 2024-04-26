@@ -38,12 +38,8 @@ class Quiz2ViewModel @Inject constructor(): ViewModel(){
         var str1 = ""
         var str2 = ""
 
-        while (p1 < n1) {
-            str1 += v1[p1++]
-        }
-        while (p2 < n2) {
-            str2 += v2[p2++]
-        }
+        while (p1 < n1) str1 += v1[p1++]
+        while (p2 < n2)  str2 += v2[p2++]
 
         var st1 = 0
         var st2 = 0
